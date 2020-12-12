@@ -3,7 +3,8 @@ import random
 
 class hangman:
     def __init__(self):
-        self.word_list = ['sensitive', 'humidity', 'backpack', 'travelling', 'silence', 'allergy']
+        self.word_list = ['sensitive', 'humidity', 'backpack', 'travelling',
+                          'silence', 'allergy']
         self.word = random.choice(self.word_list)
         self.word_completion = "-" * len(self.word)
         self.guessed = False
@@ -35,13 +36,14 @@ class get_play(hangman):
                     print("Good job,", guess, "is in the word!")
                     self.guessed_letters.append(guess)
                     self.word_as_list = list(self.word_completion)
-                    indices = [i for i, letter in enumerate(self.word) if letter == guess]
+                    indices = [i for i, letter in enumerate(self.word) 
+                               if letter == guess]
                     for index in indices:
                         self.word_as_list[index] = guess
-                        self.word_completion = "".join(word_as_list)
+                        self.word_completion = "".join(self.word_as_list)
                     if "-" not in self.word_completion:
                         self.guessed = True
-            elif len(guess) == len(word) and guess.isalpha():
+            elif len(guess) == len(self.word) and guess.isalpha():
                 if guess in self.guessed_words:
                     print("You already guessed the word", guess)
                 elif guess != self.word:
@@ -50,7 +52,7 @@ class get_play(hangman):
                     self.guessed_words.append(guess)
                 else:
                     self.guessed = True
-                    self.word_completion = word
+                    self.word_completion = self.word
             else:
                 print("Not a valid guess.")
             print(self.word_completion)
@@ -66,4 +68,3 @@ object1 = hangman()
 object2 = get_play()
 object2.get_word()
 object2.play()
-

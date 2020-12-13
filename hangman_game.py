@@ -2,8 +2,8 @@ import random
 import re
 
 
-#main class in which all attributes are defined
 class hangman:
+    # main class in which all attributes are defined
     def __init__(self):
         self.word_list = ['sensitive', 'humidity', 'backpack', 'travelling',
                           'silence', 'allergy']
@@ -15,8 +15,9 @@ class hangman:
         self.tries = 6
 
 
-#get_play class is used to get a random word and to check whether the letter is in word or not
 class get_play(hangman):
+    #   get_play class is used to get a random word
+    #   to check whether the letter is in word or not
     def get_word(self):
         return self.word.upper()
 

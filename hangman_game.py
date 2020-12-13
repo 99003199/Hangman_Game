@@ -1,4 +1,5 @@
 import random
+import re
 
 
 class hangman:
@@ -24,7 +25,7 @@ class get_play(hangman):
         print("\n")
         while not self.guessed and self.tries >= 0:
             print("You have ", self.tries, " tries")
-            guess = input("Please guess a letter or word: ").upper()
+            guess = input("Please guess a letter or word: ")
             if len(guess) == 1 and guess.isalpha():
                 if guess in self.guessed_letters:
                     print("You already guessed the letter", guess)
@@ -36,7 +37,7 @@ class get_play(hangman):
                     print("Good job,", guess, "is in the word!")
                     self.guessed_letters.append(guess)
                     self.word_as_list = list(self.word_completion)
-                    indices = [i for i, letter in enumerate(self.word) 
+                    indices = [i for i, letter in enumerate(self.word)
                                if letter == guess]
                     for index in indices:
                         self.word_as_list[index] = guess
@@ -59,9 +60,11 @@ class get_play(hangman):
             print("\n")
         if self.guessed:
             print("Congrats, you guessed the word! You win!")
+            print(re.match("[a-z]+", self.word))
         else:
             print("Sorry, you ran out of tries.")
             print(" The word was " + self.word + ". Maybe next time!")
+            print(re.match("[a-z]+", self.word))
 
 
 object1 = hangman()

@@ -73,3 +73,4 @@ object1 = hangman()
 object2 = get_play()
 object2.get_word()
 object2.play()
+
